@@ -105,12 +105,13 @@ void main()
 {
 	int choice;
 	while(1) {
-        clrscr();
+        //clrscr();
 		printf("\n\tPress 1 To see list\n");
 		printf("\tPress 2 For insert node\n");
 		printf("\tPress 3 For delete node\n");
 		printf("\tPress 4 To reverse the list\n");
-		printf("\tPress 5 To exit\n");
+		printf("\tPress 5 To show number of elements\n");
+		printf("\tPress 6 To exit\n");
 		printf("\nEnter Choice :\n");
 		scanf("%d", &choice);
 
@@ -127,7 +128,10 @@ void main()
 		case 4:
 			REV();
 			break;
-		case 5:
+        case 5:
+            printf("There are %d elements in the list!",count);
+            break;
+		case 6:
 			exit(0);
 			break;
 		default:
