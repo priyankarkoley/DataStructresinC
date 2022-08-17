@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1658359423 source:d:\datasturcturesinc\singlelinkedlist\main.c
-	<stdio.h>
-	<stdlib.h>
-	<conio.h>
-
