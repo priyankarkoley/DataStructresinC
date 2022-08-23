@@ -217,16 +217,17 @@ void deleteAtEnd(l* ptr)
 void deleteAtAnyPos(l* ptr)
 {
     int ele;
-    l*node, *ptr1 = ptr->next;
+    l*node, *ptr1 = head;
     printf("Enter the value to be deleted: ");
     scanf("%d", &ele);
     while(ptr1!=NULL)
     {
-        if(ptr1->x == ele)
+        if(ptr1->next->x == ele)
         {
-            ptr->next = ptr1->next;
-            node = ptr1;
+	    node = ptr1;
+            ptr1->next = ptr1->next->next;
             free(node);
+	    break;
         }
     }
 }
