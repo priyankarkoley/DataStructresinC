@@ -196,27 +196,28 @@ void delete_(l* ptr)
 
 void deleteAtBeginning(l* ptr)
 {
-    l* node = ptr;
     head = ptr->next;
+    l* node = ptr;
     free(node);
 }
 
 void deleteAtEnd(l* ptr)
 {
-    l* ptr1;
+    l* ptr1, *node;
     while(ptr1->next!=NULL)
     {
         ptr = ptr->next;
         ptr1 = ptr->next;
     }
     ptr->next=NULL;
-    free(ptr1);
+    node = ptr1;
+    free(node);
 }
 
 void deleteAtAnyPos(l* ptr)
 {
     int ele;
-    l* ptr1 = ptr->next;
+    l*node, *ptr1 = ptr->next;
     printf("Enter the value to be deleted: ");
     scanf("%d", &ele);
     while(ptr1!=NULL)
@@ -224,7 +225,8 @@ void deleteAtAnyPos(l* ptr)
         if(ptr1->x == ele)
         {
             ptr->next = ptr1->next;
-            free(ptr1);
+            node = ptr1;
+            free(node);
         }
     }
 }
@@ -232,13 +234,14 @@ void deleteAtAnyPos(l* ptr)
 void sort(l* ptr)
 {
     l* ptr1;
-    for(;ptr->next!=NULL;ptr = ptr->next)
+    int temp;
+    for(;ptr!=NULL;ptr = ptr->next)
     {
-        for(ptr1=ptr->next;ptr1->next!=NULL;ptr1 = ptr1->next)
+        for(ptr1=ptr->next;ptr1!=NULL;ptr1 = ptr1->next)
         {
             if(ptr->x > ptr1->x)
             {
-                int temp = ptr->x;
+                temp = ptr->x;
                 ptr->x = ptr1->x;
                 ptr1->x = temp;
             }
@@ -265,7 +268,7 @@ l* rev(l* ptr)
 
 void search(l* ptr)
 {
-    int ele;
+    int ele, flag=0;
     printf("Enter the value to be searched: ");
     scanf("%d", &ele);
     while(ptr!=NULL)
@@ -273,9 +276,12 @@ void search(l* ptr)
         if(ptr->x == ele)
         {
             printf("Element found.");
+            flag = 1;
         }
         ptr = ptr->next;
     }
+    if (flag==0)
+        printf("Element Not Found.");
 }
 
 
