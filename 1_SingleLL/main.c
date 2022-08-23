@@ -91,12 +91,12 @@ void create(l* ptr)
     ptr->next=NULL;
     printf("Do you want to continue?");
     scanf(" %c", &ch);
-   /** while(ch=='y'||ch=='Y')
+    while(ch=='y'||ch=='Y')
     {
         ptr->next=(l*)malloc(sizeof(l));
         ptr=ptr->next;
         create(ptr);
-    }**/
+    }
 }
 
 void view(l* ptr)
@@ -117,13 +117,13 @@ void insert(l*ptr)
 
 		switch (choice) {
 		case 1:
-			create(ptr);
-			break;
-		case 2:
 			insertAtBeginning(ptr);
 			break;
-		case 3:
+		case 2:
 			insertAtEnd(ptr);
+			break;
+		case 3:
+			insertAfterAnyPos(ptr);
 			break;
         default:
 			printf("Incorrect Choice\n");
@@ -155,14 +155,18 @@ void insertAtEnd(l* ptr)
 
 void insertAfterAnyPos(l* ptr)
 {
+    int ele;
+    printf("Enter the value to insert after: ");
+    scanf("%d", &ele);
     while(ptr->next!=NULL)
     {
-        if(ptr->x == NULL)
+        if(ptr->x == ele)
         {
             l* new = (l*)malloc(sizeof(l));
             printf("Enter the value: ");
             scanf("%d", &new->x);
             new->next = ptr->next;
+            ptr->next = new;
         }
         ptr = ptr->next;
     }
