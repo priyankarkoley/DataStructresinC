@@ -20,49 +20,49 @@ OR, 12. EXIT
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct list{
+typedef struct list
+{
     int x;
-    struct list* next;
+    struct list *next;
 } l;
 
 char ch;
-l* head;
+l *head;
 
-void create(l*);
-void insert(l*);
-    void insertAtBeginning(l*);
-    void insertAtEnd(l*);
-    void insertAfterAnyPos(l*);
-void delete_(l*);
-    void deleteAtBeginning(l*);
-    void deleteAtEnd(l*);
-    void deleteAtAnyPos(l*);
-void view(l*);
-void sort(l*);
-void rev(l*);
-void search(l*);
-
-
+void create(l *);
+void insert(l *);
+void insertAtBeginning(l *);
+void insertAtEnd(l *);
+void insertAfterAnyPos(l *);
+void delete_(l *);
+void deleteAtBeginning(l *);
+void deleteAtEnd(l *);
+void deleteAtAnyPos(l *);
+void view(l *);
+void sort(l *);
+void rev(l *);
+void search(l *);
 
 void main()
 {
-	int choice;
-	head =(l*)malloc(sizeof(l));
-	while(1)
+    int choice;
+    head = (l *)malloc(sizeof(l));
+    while (1)
     {
         printf("\n\n\n\n1. Create a Linked List\n2. Insert a NODE \n3. Delete a NODE\n4. View the list\n5. Sort the list\n6. Reverse the list\n7. Search in the list\n8. Exit");
-		printf("\n\nEnter Choice :");
-		scanf("%d", &choice);
+        printf("\n\nEnter Choice :");
+        scanf("%d", &choice);
 
-		switch (choice) {
-		case 1:
-			create(head);
-			break;
-		case 2:
-			insert(head);
-			break;
-		case 3:
-			delete_(head);
+        switch (choice)
+        {
+        case 1:
+            create(head);
+            break;
+        case 2:
+            insert(head);
+            break;
+        case 3:
+            delete_(head);
             break;
         case 4:
             view(head);
@@ -79,62 +79,62 @@ void main()
         case 8:
             exit(0);
             break;
-		default:
-			printf("Incorrect Choice\n");
-		}
-	}
+        default:
+            printf("Incorrect Choice\n");
+        }
+    }
 }
 
-void create(l* ptr)
+void create(l *ptr)
 {
     printf("Enter the value: ");
     scanf("%d", &ptr->x);
-    ptr->next=NULL;
+    ptr->next = NULL;
     printf("Do you want to continue?");
     scanf(" %c", &ch);
-    while(ch=='y'||ch=='Y')
+    while (ch == 'y' || ch == 'Y')
     {
-        ptr->next=(l*)malloc(sizeof(l));
-        ptr=ptr->next;
+        ptr->next = (l *)malloc(sizeof(l));
+        ptr = ptr->next;
         create(ptr);
     }
 }
 
-void view(l* ptr)
+void view(l *ptr)
 {
-    while(ptr!=NULL)
+    while (ptr != NULL)
     {
         printf("\n%d\t", ptr->x);
-        ptr=ptr->next;
+        ptr = ptr->next;
     }
 }
 
-void insert(l*ptr)
+void insert(l *ptr)
 {
     int choice;
     printf("\n\n1. Insert a NODE at the beginning\n2. Insert a NODE at the end\n3. Insert a NODE after any element");
     printf("\n\nEnter Choice :");
-		scanf("%d", &choice);
+    scanf("%d", &choice);
 
-		switch (choice) {
-		case 1:
-			insertAtBeginning(ptr);
-			break;
-		case 2:
-			insertAtEnd(ptr);
-			break;
-		case 3:
-			insertAfterAnyPos(ptr);
-			break;
-        default:
-			printf("Incorrect Choice\n");
-
+    switch (choice)
+    {
+    case 1:
+        insertAtBeginning(ptr);
+        break;
+    case 2:
+        insertAtEnd(ptr);
+        break;
+    case 3:
+        insertAfterAnyPos(ptr);
+        break;
+    default:
+        printf("Incorrect Choice\n");
     }
 }
 
-void insertAtBeginning(l* ptr)
+void insertAtBeginning(l *ptr)
 {
-    l* new = (l*)malloc(sizeof(l));
+    l *new = (l *)malloc(sizeof(l));
     printf("Enter the value: ");
     scanf("%d", &new->x);
     new->next = head;
@@ -142,12 +142,12 @@ void insertAtBeginning(l* ptr)
     view(head);
 }
 
-void insertAtEnd(l* ptr)
+void insertAtEnd(l *ptr)
 {
-    l* new = (l*)malloc(sizeof(l));
+    l *new = (l *)malloc(sizeof(l));
     printf("Enter the value: ");
     scanf("%d", &new->x);
-    while(ptr->next!=NULL)
+    while (ptr->next != NULL)
     {
         ptr = ptr->next;
     }
@@ -156,16 +156,16 @@ void insertAtEnd(l* ptr)
     view(head);
 }
 
-void insertAfterAnyPos(l* ptr)
+void insertAfterAnyPos(l *ptr)
 {
     int ele;
     printf("Enter the value to insert after: ");
     scanf("%d", &ele);
-    while(ptr->next!=NULL)
+    while (ptr->next != NULL)
     {
-        if(ptr->x == ele)
+        if (ptr->x == ele)
         {
-            l* new = (l*)malloc(sizeof(l));
+            l *new = (l *)malloc(sizeof(l));
             printf("Enter the value: ");
             scanf("%d", &new->x);
             new->next = ptr->next;
@@ -176,14 +176,15 @@ void insertAfterAnyPos(l* ptr)
     view(head);
 }
 
-void delete_(l* ptr)
+void delete_(l *ptr)
 {
     int choice;
     printf("\n\n1. Delete a NODE at the beginning\n2. Delete a NODE at the end\n3. Delete any element");
     printf("\n\nEnter Choice :");
     scanf("%d", &choice);
 
-    switch (choice) {
+    switch (choice)
+    {
     case 1:
         deleteAtBeginning(ptr);
         break;
@@ -198,39 +199,39 @@ void delete_(l* ptr)
     }
 }
 
-void deleteAtBeginning(l* ptr)
+void deleteAtBeginning(l *ptr)
 {
     head = ptr->next;
-    l* node = ptr;
+    l *node = ptr;
     free(node);
     view(head);
 }
 
-void deleteAtEnd(l* ptr)
+void deleteAtEnd(l *ptr)
 {
-    l* ptr1, *node;
-    while(ptr1->next!=NULL)
+    l *ptr1, *node;
+    while (ptr1->next != NULL)
     {
         ptr = ptr->next;
         ptr1 = ptr->next;
     }
-    ptr->next=NULL;
+    ptr->next = NULL;
     node = ptr1;
     free(node);
     view(head);
 }
 
-void deleteAtAnyPos(l* ptr)
+void deleteAtAnyPos(l *ptr)
 {
     int ele;
-    l*node, *ptr1 = head;
+    l *node, *ptr1 = head;
     printf("Enter the value to be deleted: ");
     scanf("%d", &ele);
-    while(ptr1!=NULL)
+    while (ptr1 != NULL)
     {
-        if(ptr1->x == ele)
+        if (ptr1->x == ele)
         {
-	        node = ptr1;
+            node = ptr1;
             ptr->next = ptr1->next;
             ptr1 = ptr1->next;
             free(node);
@@ -241,15 +242,15 @@ void deleteAtAnyPos(l* ptr)
     view(head);
 }
 
-void sort(l* ptr)
+void sort(l *ptr)
 {
-    l* ptr1;
+    l *ptr1;
     int temp;
-    for(;ptr!=NULL;ptr = ptr->next)
+    for (; ptr != NULL; ptr = ptr->next)
     {
-        for(ptr1=ptr->next;ptr1!=NULL;ptr1 = ptr1->next)
+        for (ptr1 = ptr->next; ptr1 != NULL; ptr1 = ptr1->next)
         {
-            if(ptr->x > ptr1->x)
+            if (ptr->x > ptr1->x)
             {
                 temp = ptr->x;
                 ptr->x = ptr1->x;
@@ -260,12 +261,12 @@ void sort(l* ptr)
     view(head);
 }
 
-void rev(l* ptr)
+void rev(l *ptr)
 {
-    l* counter;
-    l* current = ptr;
-    l* prev = NULL;
-    while(current!=NULL)
+    l *counter;
+    l *current = ptr;
+    l *prev = NULL;
+    while (current != NULL)
     {
         counter = current->next;
         current->next = prev;
@@ -278,20 +279,20 @@ void rev(l* ptr)
     view(head);
 }
 
-void search(l* ptr)
+void search(l *ptr)
 {
-    int ele, flag=0;
+    int ele, flag = 0;
     printf("Enter the value to be searched: ");
     scanf("%d", &ele);
-    while(ptr!=NULL)
+    while (ptr != NULL)
     {
-        if(ptr->x == ele)
+        if (ptr->x == ele)
         {
             printf("Element found.");
             flag = 1;
         }
         ptr = ptr->next;
     }
-    if (flag==0)
+    if (flag == 0)
         printf("Element Not Found.");
 }
