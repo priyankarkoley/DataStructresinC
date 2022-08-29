@@ -11,7 +11,7 @@ It's a menu-driven program. In this program user can
 7. Delete any NODE
 8. View the list
 9. Sort the list
-10. Reverse the list
+10. Reverse the list1
 11. Search in the list
 OR, 12. EXIT
 
@@ -39,7 +39,7 @@ void delete_(l*);
     void deleteAtAnyPos(l*);
 void view(l*);
 void sort(l*);
-l* rev(l*);
+void rev(l*);
 void search(l*);
 
 
@@ -71,10 +71,11 @@ void main()
             sort(head);
             break;
         case 6:
-            head = rev(head);
+            rev(head);
             break;
         case 7:
             search(head);
+            break;
         case 8:
             exit(0);
             break;
@@ -103,7 +104,7 @@ void view(l* ptr)
 {
     while(ptr!=NULL)
     {
-        printf("\n%d", ptr->x);
+        printf("\n%d\t", ptr->x);
         ptr=ptr->next;
     }
 }
@@ -138,6 +139,7 @@ void insertAtBeginning(l* ptr)
     scanf("%d", &new->x);
     new->next = head;
     head = new;
+    view(head);
 }
 
 void insertAtEnd(l* ptr)
@@ -151,6 +153,7 @@ void insertAtEnd(l* ptr)
     }
     new->next = ptr->next;
     ptr->next = new;
+    view(head);
 }
 
 void insertAfterAnyPos(l* ptr)
@@ -170,6 +173,7 @@ void insertAfterAnyPos(l* ptr)
         }
         ptr = ptr->next;
     }
+    view(head);
 }
 
 void delete_(l* ptr)
@@ -199,6 +203,7 @@ void deleteAtBeginning(l* ptr)
     head = ptr->next;
     l* node = ptr;
     free(node);
+    view(head);
 }
 
 void deleteAtEnd(l* ptr)
@@ -212,6 +217,7 @@ void deleteAtEnd(l* ptr)
     ptr->next=NULL;
     node = ptr1;
     free(node);
+    view(head);
 }
 
 void deleteAtAnyPos(l* ptr)
@@ -230,6 +236,7 @@ void deleteAtAnyPos(l* ptr)
 	    break;
         }
     }
+    view(head);
 }
 
 void sort(l* ptr)
@@ -248,9 +255,10 @@ void sort(l* ptr)
             }
         }
     }
+    view(head);
 }
 
-l* rev(l* ptr)
+void rev(l* ptr)
 {
     l* counter;
     l* current = ptr;
@@ -264,7 +272,8 @@ l* rev(l* ptr)
         current = counter;
     }
     ptr = prev;
-    return(ptr);
+    head = ptr;
+    view(head);
 }
 
 void search(l* ptr)
