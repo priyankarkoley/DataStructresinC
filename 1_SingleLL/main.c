@@ -104,7 +104,7 @@ void view(l *ptr)
 {
     while (ptr != NULL)
     {
-        printf("\n%d\t", ptr->x);
+        printf("%d\t", ptr->x);
         ptr = ptr->next;
     }
 }
