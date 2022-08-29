@@ -228,13 +228,15 @@ void deleteAtAnyPos(l* ptr)
     scanf("%d", &ele);
     while(ptr1!=NULL)
     {
-        if(ptr1->next->x == ele)
+        if(ptr1->x == ele)
         {
-	    node = ptr1;
-            ptr1->next = ptr1->next->next;
+	        node = ptr1;
+            ptr->next = ptr1->next;
+            ptr1 = ptr1->next;
             free(node);
-	    break;
         }
+        ptr = ptr1;
+        ptr1 = ptr1->next;
     }
     view(head);
 }
@@ -293,5 +295,3 @@ void search(l* ptr)
     if (flag==0)
         printf("Element Not Found.");
 }
-
-
