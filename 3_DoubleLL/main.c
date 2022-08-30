@@ -114,14 +114,14 @@ void insert(dll*ptr)
 
 		switch (choice) {
 		case 1:
-			create(ptr);
-			break;
-		case 2:
 			insertAtBeginning(ptr);
 			break;
-		case 3:
+		case 2:
 			insertAtEnd(ptr);
 			break;
+        case 3:
+    		insertAfterAnyPos(ptr);
+	    	break;
         default:
 			printf("Incorrect Choice\n");
 
@@ -135,6 +135,7 @@ void insertAtBeginning(dll* ptr)
     scanf("%d", &new->x);
     new->prev = head->prev;
     head->prev = new;
+    new->next = head;
     head = new;
 }
 
@@ -155,7 +156,7 @@ void insertAfterAnyPos(dll* ptr)
     int ele;
     printf("Enter the element to insert after: ");
     scanf("%d", &ele);
-    while(ptr->next!=head)
+    while(ptr->next!=NULL)
     {
         if(ptr->x == ele)
         {
@@ -163,6 +164,9 @@ void insertAfterAnyPos(dll* ptr)
             printf("Enter the value: ");
             scanf("%d", &new->x);
             new->next = ptr->next;
+            new->prev=ptr;
+            ptr->next->prev=new;
+            ptr->next=new;
         }
         ptr = ptr->next;
     }
@@ -202,7 +206,7 @@ void deleteAtEnd(dll* ptr)
 {
     dll* preptr;
     dll* node;
-    while(ptr!=NULL)
+    while(ptr->next!=NULL)
     {
         preptr = ptr;
         ptr = ptr->next;
@@ -216,7 +220,7 @@ void deleteAtAnyPos(dll* ptr)
 {
     int ele;
     dll* node;
-    dll* preptr;
+    dll* preptr=ptr;
     printf("Enter the value to be deleted: ");
     scanf("%d", &ele);
     while(ptr!=NULL)
@@ -226,7 +230,10 @@ void deleteAtAnyPos(dll* ptr)
             preptr->next = ptr->next;
             ptr->next->prev = ptr->prev;
             node = ptr;
-            free(ptr);
+            ptr=ptr->next;
+            free(node);
         }
+        preptr = ptr;
+        ptr = ptr->next;
     }
 }
