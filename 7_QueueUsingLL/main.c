@@ -80,8 +80,8 @@ void pop(l *ptr)
         head = ptr->next;
         l *node = ptr;
         free(node);
-        view(head);
     }
+    view(head);
 }
 
 void view(l *ptr)
