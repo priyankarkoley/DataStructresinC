@@ -62,6 +62,7 @@ void push(l *ptr)
         }
         ptr->next = new;
     }
+    view(head);
 }
 void pop(l *preptr)
 {
@@ -86,6 +87,7 @@ void pop(l *preptr)
         node = ptr;
         free(node);
     }
+    view(head);
 }
 
 void view(l *ptr)

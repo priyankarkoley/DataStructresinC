@@ -18,7 +18,7 @@ void main()
     int choice;
     while (1)
     {
-        printf("\n\n\n1.PUSH an element into the Queue\n2.POP an element from the Queue\n3.View the elements of the Queue\n4. Exit");
+        printf("\n\n\n1.PUSH an element into the Queue\n2.POP an element from the Queue\n3.View the elements of the Queue\n4.Exit");
         printf("\n\nEnter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -48,31 +48,32 @@ void push(l *ptr)
         head = (l *)malloc(sizeof(l));
         printf("Enter the value: ");
         scanf("%d", &head->x);
-        head->next=NULL;
+        head->next = NULL;
     }
     else
     {
         l *new = (l *)malloc(sizeof(l));
         printf("Enter the value: ");
         scanf("%d", &new->x);
-        new->next=NULL;
+        new->next = NULL;
         while (ptr->next != NULL)
         {
             ptr = ptr->next;
         }
         ptr->next = new;
     }
+    view(head);
 }
-void pop(l *preptr)
+void pop(l *ptr)
 {
-    if (head->next == NULL)
+    if (head == NULL)
+    {
+        printf("Queue Underflow. Nothing to delete. ");
+    }
+    else if ((head->next == NULL) && (head != NULL))
     {
         free(head);
         head = NULL;
-    }
-    else if (head == NULL)
-    {
-        printf("Queue Underflow. Nothing to delete. ");
     }
     else
     {
@@ -98,54 +99,3 @@ void view(l *ptr)
         }
     }
 }
-
-// // void view(l *ptr)
-// // {
-// //     if (head == NULL)
-// //     {
-// //         printf("Queue Underflow");
-// //     }
-// //     else
-// //     {
-//         while (ptr != NULL)
-//         {
-//             printf("%d\t", ptr->x);
-//             ptr = ptr->next;
-//         }
-// //     }
-// // }
-
-// // void push(l *ptr)
-// // {
-//     // l *new = (l *)malloc(sizeof(l));
-//     // printf("Enter the value: ");
-//     // scanf("%d", &new->x);
-// //     new->next = NULL;
-// //     while (ptr->next != NULL)
-// //     {
-// //         ptr = ptr->next;
-// //     }
-// //     ptr->next = new;
-// //     view(head);
-// // }
-
-// // void pop(l *ptr)
-// // {
-// //     if (head == NULL)
-// //     {
-// //         printf("Queue Underflow");
-// //     }
-// //     else
-// //     {
-//         l *ptr1, *node;
-//         while (ptr1->next != NULL)
-//         {
-//             ptr = ptr->next;
-//             ptr1 = ptr->next;
-//         }
-//         ptr->next = NULL;
-//         node = ptr1;
-//         free(node);
-// //         view(head);
-// //     }
-// // }
