@@ -18,7 +18,7 @@ void main()
     int choice;
     while(1)
     {
-        printf("\n\n\n1.PUSH an element into the Stack\n2.POP an element from the Stack\n3.View the elements of the Stack\n4. Exit");
+        printf("\n\n\n1.PUSH an element into the Stack\n2.POP an element from the Stack\n3.View the elements of the Stack\n4.Exit");
         printf("\n\nEnter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -48,12 +48,14 @@ void push(l *ptr)
         head = (l*)malloc(sizeof(l));
         printf("Enter the value: ");
         scanf("%d", &head->x);
+        head->next=NULL;
     }
     else
     {
         l *new = (l *)malloc(sizeof(l));
         printf("Enter the value: ");
         scanf("%d", &new->x);
+        new->next=NULL;
         while(ptr->next!=NULL)
         {
             ptr = ptr->next;
@@ -63,14 +65,14 @@ void push(l *ptr)
 }
 void pop(l *preptr)
 {
-    if(head->next==NULL)
+    if(head==NULL)
+    {
+        printf("Stack Underflow. Nothing to delete. ");
+    }
+    else if((head->next==NULL)&&(head!=NULL))
     {
         free(head);
         head = NULL;
-    }
-    else if(head==NULL)
-    {
-        printf("Stack Underflow. Nothing to delete. ");
     }
     else
     {
@@ -101,55 +103,3 @@ void view(l *ptr)
         }
     }
 }
-
-
-// // void view(l *ptr)
-// // {
-// //     if (head == NULL)
-// //     {
-// //         printf("Stack Underflow");
-// //     }
-// //     else
-// //     {
-//         while (ptr != NULL)
-//         {
-//             printf("%d\t", ptr->x);
-//             ptr = ptr->next;
-//         }
-// //     }
-// // }
-
-// // void push(l *ptr)
-// // {
-//     // l *new = (l *)malloc(sizeof(l));
-//     // printf("Enter the value: ");
-//     // scanf("%d", &new->x);
-// //     new->next = NULL;
-// //     while (ptr->next != NULL)
-// //     {
-// //         ptr = ptr->next;
-// //     }
-// //     ptr->next = new;
-// //     view(head);
-// // }
-
-// // void pop(l *ptr)
-// // {
-// //     if (head == NULL)
-// //     {
-// //         printf("Stack Underflow");
-// //     }
-// //     else
-// //     {
-//         l *ptr1, *node;
-//         while (ptr1->next != NULL)
-//         {
-//             ptr = ptr->next;
-//             ptr1 = ptr->next;
-//         }
-//         ptr->next = NULL;
-//         node = ptr1;
-//         free(node);
-// //         view(head);
-// //     }
-// // }
