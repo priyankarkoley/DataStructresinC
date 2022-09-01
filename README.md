@@ -5,6 +5,7 @@ In this repo I have Collected all the Data Sturcture related programs. This cont
 4-> Stack Implementation using Array<br/>
 5-> Stack Implementation using Linked List<br/>
 6-> Queue Implementation using Array<br/>
-7-> Queue Implementation using Linked List8-><br/>
-9-><br/>
-10->
+7-> Queue Implementation using Linked List</br>
+8-> Circular Queue using Array<br/>
+9-> Double Ended Queue using Array<br/>
+10-><br/>
